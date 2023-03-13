@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "lebOIl58QqxMYGPWUQ9agsYhXZGyyQYsUJDWy/X+8cQ=",
+  "Source": "PostService",
+  "BasePath": "_content/PostService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Swati\\Project\\BlogManagement\\BlogManagement-master\\BlogManagement-master\\CommentService\\CommentService.csproj",
+      "Version": 2,
+      "Source": "CommentService",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
