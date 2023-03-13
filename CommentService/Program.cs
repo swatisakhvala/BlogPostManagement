@@ -60,7 +60,7 @@ app.UseIpRateLimiting();
 
 
 app.UseAuthentication();
-app.UseAuthorization();
+
 //app.Use(async (context, next) =>
 //{
 //    if (!context.User.Identity?.IsAuthenticated ?? false)
@@ -74,7 +74,7 @@ app.UseAuthorization();
 //    }
 
 //});
-
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

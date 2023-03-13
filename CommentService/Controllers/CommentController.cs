@@ -3,6 +3,7 @@ using CommentService.Model;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 
 namespace CommentService.Controllers
 {
@@ -17,8 +18,18 @@ namespace CommentService.Controllers
         }
 
         [HttpPost]
-        public async Task<BlogComment> AddCommentAsync(BlogComment blogComment)
+        public async Task<dynamic> AddCommentAsync(BlogComment blogComment)
         {
+            AuthenticationToken Authtoken = new AuthenticationToken();
+            var authorization = Request.Headers[HeaderNames.Authorization].Count != 0 ? Request.Headers[HeaderNames.Authorization].ToString().Split(" ")[1] : "";
+
+            bool token = await Authtoken.Validate(authorization);
+            if (!token)
+            {
+                Response.StatusCode = 401;
+                return "Not Authenticated";
+            }
+
             var CommentDetails = await mediator.Send(new CreateCommentCommand(
                 blogComment.BlogPostId,
                 blogComment.Title,

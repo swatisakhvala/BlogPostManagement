@@ -1,6 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Microsoft.IdentityModel.Protocols;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using PostService.Data;
 using PostService.Model;
+using System.Globalization;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace PostService.Repository
 {
@@ -21,7 +28,17 @@ namespace PostService.Repository
 
         public async Task<BlogPost> GetPostByIdWithComment(int Id) 
         {
-            return await _dbContext.BlogPost.Include(x=>x.BlogComment).Where(x => x.Id == Id).FirstOrDefaultAsync();
+            try
+            {
+                var postlist = await _dbContext.BlogPost.Include(x => x.BlogComment).Where(x => x.Id == Id).FirstOrDefaultAsync();
+                return postlist;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
     }
 }

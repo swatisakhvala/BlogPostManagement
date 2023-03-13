@@ -1,9 +1,12 @@
 using AspNetCoreRateLimit;
+using Azure.Core;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Web;
+using Microsoft.Net.Http.Headers;
+using PostService;
 using PostService.Data;
 using PostService.Repository;
 using System.Reflection;
@@ -67,18 +70,19 @@ app.UseHttpsRedirection();
 app.UseIpRateLimiting();
 
 app.UseAuthentication();
-app.UseAuthorization();
+
 //app.Use(async (context, next) =>
 //{
-//    if (!context.User.Identity?.IsAuthenticated ?? false)
-//    {
-//        context.Response.StatusCode = 401;
-//        await context.Response.WriteAsync("Not Authenticated");
-//    }
-//    else await next();
+//    //if (!context.User.Identity?.IsAuthenticated ?? false)
+//    //{
+//    //    context.Response.StatusCode = 401;
+//    //    await context.Response.WriteAsync("Not Authenticated");
+//    //}
+//    //else await next();
+//    var token = Request.Headers[HeaderNames.Authorization];
 
 //});
-
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
