@@ -18,5 +18,6 @@ namespace PostService.Data
         }
 
         public DbSet<BlogPost> BlogPost { get; set; }
+        public DbSet<BlogPostComment> BlogComment { get; set; }
     }
 }

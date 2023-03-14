@@ -1,5 +1,4 @@
-﻿using CommentService.Model;
-using MediatR;
+﻿using MediatR;
 using PostService.Model;
 
 namespace PostService.Command
@@ -15,8 +14,8 @@ namespace PostService.Command
         public DateTime PublishedOn { get; set; }
         public DateTime CreatedOn { get; set; }
         public DateTime UpdatedOn { get; set; }
-        public List<BlogComment> BlogComment { get; set; }
-        public CreatePostCommand(string Title, string MetaTitle, string Slag, string Summary, string PostContent, bool IsPublished, DateTime PublishedOn, DateTime CreatedOn, DateTime UpdatedOn, List<BlogComment> BlogComment) 
+        public List<BlogPostComment> BlogComment { get; set; }
+        public CreatePostCommand(string Title, string MetaTitle, string Slag, string Summary, string PostContent, bool IsPublished, DateTime PublishedOn, DateTime CreatedOn, DateTime UpdatedOn, List<BlogPostComment> BlogComment) 
         {
             this.Title = Title;
             this.MetaTitle = MetaTitle;
